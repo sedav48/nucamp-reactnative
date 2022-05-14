@@ -5,7 +5,7 @@ import { CAMPSITES } from '../shared/campsites';
 import { PROMOTIONS } from '../shared/promotions';
 import { PARTNERS } from '../shared/partners';
 
-function Renderitem({item}) {
+function RenderItem({item}) {
     if (item) {
         return (
             <Card 
