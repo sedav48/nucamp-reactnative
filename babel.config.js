@@ -1,7 +1,7 @@
-export default function(api) {
+modules.exports = function(api) {
   api.cache(true);
   return {
     presets: ['babel-preset-expo'],
   
-};
+  };
 };

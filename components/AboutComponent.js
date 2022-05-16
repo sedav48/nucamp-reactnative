@@ -21,12 +21,19 @@ function Mission() {
 }
 
 class About extends Component {
+    
     constructor(props) {
         super(props);
         this.state = {
             partners: PARTNERS
         };
     }
+
+    static navigationOptions = {
+        title: 'About Us'
+
+
+    };
 
     render() {
         const renderPartner = ({partner}) => {
@@ -44,18 +51,14 @@ class About extends Component {
                     <FlatList
                         data={this.state.partners}
                         renderItem={renderPartner}
-                        keyExtractor={partner => partner.id.toString()}
+                        keyExtractor={item => item.id.toString()}
                 />
                 </Card>
              </ScrollView>
     }
         
            
-    static navigationOptions = {
-        title: 'About Us'
-
-
-    }
+    
 }
 
     export default About;
