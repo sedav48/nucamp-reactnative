@@ -5,9 +5,9 @@ import About from './AboutComponent';
 import Contact from './ContactComponent';
 import CampsiteInfo from './CampsiteInfoComponent';
 import Constants from 'expo-constants';
-import { View, Platform } from 'react-native';
+import { View, Platform, StyleSheet, Text, ScrollView, Image } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
-import { createDrawerNavigator } from 'react-navigation-drawer';
+import { createDrawerNavigator, DrawerItems } from 'react-navigation-drawer';
 import { createAppContainer } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -36,9 +36,10 @@ const DirectoryNavigator = createStackNavigator (
         headerTintColor: '#fff',
         headerTitleStyle: {
             color: '#fff'
+            }
         }
     }
-});
+);
 
 const HomeNavigator = createStackNavigator (  
 
@@ -62,8 +63,9 @@ const HomeNavigator = createStackNavigator (
                 iconStyle={styles.stackIcon}
                 onPress={() => navigation.toggleDrawer()}
             />
-    })
-}
+            }
+        )
+    }
 );
 
 const AboutNavigator = createStackNavigator (
@@ -83,9 +85,10 @@ const AboutNavigator = createStackNavigator (
                 name='info-circle'
                 type='font-awesome'
                 iconStyle={styles.stackIcon}
-                onPress={() => navigation.toggleDrawer}
+                onPress={() => navigation.toggleDrawer()}
             />
-        })
+            }
+        )
         
     }
 );
@@ -107,13 +110,14 @@ const ContactNavigator = createStackNavigator (
                     name='address-card'
                     type='font-awesome'
                     iconStyle={styles.stackIcon}
-                    onPress={() => navigation.toggleDrawer}
+                    onPress={() => navigation.toggleDrawer()}
                 />
-            })
-        }
-    );
+            }
+        )
+    }
+);
 
-const CustomDrawerContentComponent = props => {
+const CustomDrawerContentComponent = props => (
     <ScrollView>
         <SafeAreaView
             style={styles.container}
@@ -129,12 +133,13 @@ const CustomDrawerContentComponent = props => {
             <DrawerItems {...props} />
         </SafeAreaView>
     </ScrollView>
-};
+);
 
 
 const MainNavigator = createDrawerNavigator (
     {
-        Home: { screen: HomeNavigator,
+        Home: {
+             screen: HomeNavigator,
                  navigationOptions: {
                 drawerIcon: ({tintColor}) => (
                     <Icon
@@ -234,7 +239,7 @@ const styles = StyleSheet.create({
     },
     drawerHeaderText: {
         color: '#3fff',
-        fontsize: 24,
+        fontSize: 24,
         fontWeight: 'bold'
     },
     drawerImage: {
@@ -245,7 +250,7 @@ const styles = StyleSheet.create({
     stackIcon: {
         marginLeft: 10,
         color: '#fff',
-        fontsize: 24
+        fontSize: 24
     }
 });
 
