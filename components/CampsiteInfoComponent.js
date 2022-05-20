@@ -11,7 +11,7 @@ const mapStateToProps = state => {
     };
 };
 
-function RenderCampsite({props}) {
+function RenderCampsite(props) {
 
     const {campsite} = props;
 
