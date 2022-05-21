@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, ScrollView, StyleSheet,
-    Picker, Switch, Button } from 'react-native';
+    Picker, Switch, Button, Modal } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 class Reservation extends Component {
@@ -12,7 +12,8 @@ class Reservation extends Component {
             campers: 1,
             hikeIn: false,
             date: new Date(),
-            showCalendar: false
+            showCalendar: false,
+            showModal: false
         };
     }
 
@@ -20,15 +21,25 @@ class Reservation extends Component {
         title: 'Reserve Campsite'
     }
 
+    toggleModal() {
+        this.setState({showModal: !this.state.showModal});
+    }
+
     handleReservation() {
         console.log(JSON.stringify(this.state));
+        this.toggleModal();
+    }
+
+    resetForm() {
         this.setState({
             campers: 1,
             hikeIn: false,
             date: new Date(),
-            showCalendar: false     
-        });
-    }
+            showCalendar: false,
+            showModal: false    
+            });
+        }
+    
 
     render() {
         return (
@@ -92,6 +103,7 @@ class Reservation extends Component {
     }
 }
 
+
 const styles = StyleSheet.create({
     formRow: {
         alignItems: 'center',
@@ -106,6 +118,22 @@ const styles = StyleSheet.create({
     },
     formItem: {
         flex: 1
+    },
+    modal: {
+        justifyContent: 'center',
+        margin: 20
+    },
+    modalTitle: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        backgroundColor: '#5637DD',
+        textAlign: 'center',
+        color: '#fff',
+        marginBottom: 20
+    },
+    modalText: {
+        fontSize: 18,
+        margin: 10
     }
 });
 
