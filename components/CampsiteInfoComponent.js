@@ -40,14 +40,15 @@ function RenderCampsite(props) {
                     raised
                     reverse
                     onPress={() => props.favorite ?
-                    console.log('Already set as a favorite') : props.markFavorite()}
+                        console.log('Already set as a favorite') : props.markFavorite()}
                     />
-                <Icon
+                <Icon 
                     name='pencil'
                     type='font-awesome'
                     color='#5637DD'
                     raised
-                    reverseonPress={() => props.onShowModal()}
+                    reverse
+                    onPress={() => props.onShowModal()}
                     />
                 </View>
             </Card>
@@ -87,6 +88,7 @@ function RenderComments({comments}) {
 }
 
 class CampsiteInfo extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -148,7 +150,7 @@ class CampsiteInfo extends Component {
                             showRating
                             startingValue={5}
                             imageSize={40}
-                            onFinishRating={rating => this.setState({rating: rating})}
+                            onFinishRating={(rating) =>this.setState({rating: rating})}
                             style={{paddingVertical:10}}
                         />
                         <Input
@@ -162,10 +164,10 @@ class CampsiteInfo extends Component {
                             />
                         <Input 
                             placeholder='Comment'
-                            lefticon={{
+                            leftIcon={{
                                 type: 'font-awesome',
                                 name: 'comment-o'}}
-                            leftIconContainerStyle={{padingRight:10}}
+                            leftIconContainerStyle={{paddingRight:10}}
                             onChangeText={(text)=>this.setState({text: text})}
                             value={this.state.text}
                             />
@@ -175,7 +177,7 @@ class CampsiteInfo extends Component {
                             title='Submit'
                             color='#5637DD'
                             onPress={() => {
-                                this.handleComment(campsiteId);
+                                this.handleComment(campsiteId, this.state.rating, this.state.author, this.state.text);
                                 this.resetForm();
                             }}
                         >
@@ -210,5 +212,5 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         margin: 20
     }
-})
+});
     export default connect(mapStateToProps, mapDispatchToProps)(CampsiteInfo);
