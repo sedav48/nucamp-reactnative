@@ -53,10 +53,10 @@ class About extends Component {
             return (
                 <ScrollView>
                     <Mission />
-                    <Card
-                        title='Community Partners'>
+                        <Card
+                            title='Community Partners'>
                         <Loading />
-                    </Card>
+                        </Card>
                 </ScrollView>
             
             );
@@ -66,10 +66,10 @@ class About extends Component {
             return (
                 <ScrollView>
                     <Mission />
-                    <Card
-                        title='Community Partners'>
+                        <Card
+                            title='Community Partners'>
                         <Text>{this.props.partners.errMess}</Text>
-                    </Card>
+                        </Card>
                 </ScrollView>
             );
         }
@@ -78,13 +78,13 @@ class About extends Component {
 
                 <ScrollView>
                     <Mission />
-                    <Card title="Community Partners">
-                        <FlatList
-                            data={this.props.partners.partners}
-                            renderItem={renderPartner}
-                            keyExtractor={item => item.id.toString()}
-                        />
-                    </Card>
+                        <Card title="Community Partners">
+                            <FlatList
+                                data={this.props.partners.partners}
+                                renderItem={renderPartner}
+                                keyExtractor={item => item.id.toString()}
+                            />
+                        </Card>
                 </ScrollView>
             );
         }
