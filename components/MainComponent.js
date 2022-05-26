@@ -11,7 +11,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createDrawerNavigator, DrawerItems } from 'react-navigation-drawer';
 import { createAppContainer } from 'react-navigation';
 import { Icon } from 'react-native-elements';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import  SafeAreaView from 'react-native-safe-area-context';
 import { connect } from 'react-redux';
 import { fetchCampsites, fetchComments, fetchPromotions, fetchPartners } from '../redux/ActionCreators';
 import Reservation from './ReservationComponent';
@@ -87,7 +87,7 @@ const AboutNavigator = createStackNavigator (
         About: { screen: About }
     },
     {
-        navigationOptions: ({navigation}) => ({
+        defaultNavigationOptions: ({navigation}) => ({
             headerStyle: {
                 backgroundColor: '#5637DD'
             },
@@ -239,15 +239,15 @@ const MainNavigator = createDrawerNavigator (
             }
        },
        Contact: { 
-        screen: ContactNavigator,
-        navigationOptions: {
-            drawerLabel: 'Contact Us',
-            drawerIcon: ({tintColor}) => (
-                <Icon
-                    name='address-card'
-                    type='font-awesome'
-                    size={24}
-                    color={tintColor}
+            screen: ContactNavigator,
+            navigationOptions: {
+                drawerLabel: 'Contact Us',
+                drawerIcon: ({tintColor}) => (
+                    <Icon
+                        name='address-card'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
                     />
                 )
              }
@@ -283,7 +283,7 @@ const MainNavigator = createDrawerNavigator (
     },
     {
         drawerBackgroundColor: '#CEC8FF',
-        ContentComponent: CustomDrawerContentComponent
+        contentComponent: CustomDrawerContentComponent
     }
 );
 
