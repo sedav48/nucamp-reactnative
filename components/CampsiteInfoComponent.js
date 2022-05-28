@@ -63,19 +63,7 @@ function RenderCampsite(props) {
         }
     });
 
-    if (campsite) {
-        return (
-            <Animatable.View
-                animation='fadeInDown'
-                duration={2000}
-                delay={1000}
-                ref={view}
-                {...panResponder.panHandlers}>
-                
-            </Animatable.View>
-
-        )
-    }
+ 
 
 
     if (campsite) {
@@ -83,7 +71,9 @@ function RenderCampsite(props) {
 
             <Animatable.View animation='fadeInDown'
              duration={2000}
-             delay={1000}>
+             delay={1000}
+             ref={view}
+             {...panResponder.panHandlers}>
                 <Card 
                     featuredTitle={campsite.name}
                     image={{uri: baseUrl + campsite.image}}>
