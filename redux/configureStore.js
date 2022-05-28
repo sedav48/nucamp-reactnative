@@ -6,7 +6,7 @@ import { comments } from './comments';
 import { promotions } from './promotions';
 import { partners } from './partners';
 import { favorites } from './favorites';
-import { persistStore, persistCombineReducers } from 'react-persist';
+import { persistStore, persistCombineReducers } from 'redux-persist';
 import storage from 'redux-persist/es/storage';
 
 const config = {
