@@ -15,7 +15,7 @@ class Contact extends Component {
             recipients: ['campsite@nucamp.co'],
             subject: 'Inquiry',
             body: 'To whom it may concern:'
-        });
+        })
     }
     
     render() {
