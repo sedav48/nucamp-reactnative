@@ -336,12 +336,12 @@ class Main extends Component {
         this.props.fetchPromotions();
         this.props.fetchPartners();
 
-        NetInfo.fetch().then(connectionInfo = {
+        NetInfo.fetch().then(connectionInfo => {
             (Platform.OS === 'ios')
                 ? Alert.alert('Initial Network Connectivity Type:', connectionInfo.type)
                 : ToastAndroid.show('Initial Network Connectivity Type: ' +
-                    connectionInfo.type, ToastAndroid.LONG));
-        };
+                    connectionInfo.type, ToastAndroid.LONG)
+        });
 
         this.unsubscribeNetInfo = NetInfo.addEventListener(connectionInfo => {
                 this.handleConnectivityChange(connectionInfo);
@@ -368,6 +368,7 @@ class Main extends Component {
         ? Alert.alert('Connection change:', connectionMsg)
         : ToastAndroid.show(connectionMsg, ToastAndroid.LONG);
     };
+}
 
     render() {
         return ( 
@@ -384,9 +385,9 @@ class Main extends Component {
 
                 );
         }
-
+    }
     
-const styles = StyleSheet.create ({
+    const styles = StyleSheet.create ({
     container: {
         flex: 1,
     },
