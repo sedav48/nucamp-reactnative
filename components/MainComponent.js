@@ -6,7 +6,6 @@ import About from './AboutComponent';
 import Contact from './ContactComponent';
 import Favorites from './FavoritesComponent';
 import Login from './LoginComponent';
-import Constants from 'expo-constants';
 import { View, Platform, StyleSheet, Text, ScrollView, Image, Alert, ToastAndroid } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createDrawerNavigator, DrawerItems } from 'react-navigation-drawer';
@@ -26,7 +25,8 @@ const mapDispatchToProps = {
     fetchComments,
     fetchPromotions,
     fetchPartners
-};
+
+    };
 
 const DirectoryNavigator = createStackNavigator (
     
@@ -38,14 +38,14 @@ const DirectoryNavigator = createStackNavigator (
                 type='font-awesome'
                 iconStyle={styles.stackIcon}
                 onPress={() => navigation.toggleDrawer()}
-            />
-        })
-    },
+                />
+            })
+         },
         CampsiteInfo: { screen: CampsiteInfo }
     }, 
     {
         initialRouteName: 'Directory',
-        defaultNavigationOptions: {
+        NavigationOptions: {
             headerStyle: {
                 backgroundColor: '#5637DD'
         },
@@ -65,7 +65,7 @@ const HomeNavigator = createStackNavigator (
     }, 
 
     {
-        defaultNavigationOptions: ({navigation}) => ({
+        NavigationOptions: ({navigation}) => ({
             headerStyle: {
                 backgroundColor: '#5637DD'
         },
@@ -89,7 +89,7 @@ const AboutNavigator = createStackNavigator (
         About: { screen: About }
     },
     {
-        defaultNavigationOptions: ({navigation}) => ({
+        NavigationOptions: ({navigation}) => ({
             headerStyle: {
                 backgroundColor: '#5637DD'
             },
@@ -114,7 +114,7 @@ const ContactNavigator = createStackNavigator (
             Contact: {screen: Contact}
         },
         {
-            defaultNavigationOptions: ({navigation}) => ({
+            NavigationOptions: ({navigation}) => ({
                 headerStyle: {
                     backgroundColor: '#5637DD'
                 },
@@ -138,7 +138,7 @@ const ReservationNavigator = createStackNavigator (
         Reservation: { screen: Reservation }
     },
     {
-        defaultNavigationOptions: ({navigation}) => ({
+        NavigationOptions: ({navigation}) => ({
             headerStyle: {
                 backgroundColor: '#5637DD'
             },
@@ -161,7 +161,7 @@ const FavoritesNavigator = createStackNavigator (
         Favorites: { screen: Favorites }
     },
     {
-        defaultNavigationOptions: ({navigation}) => ({
+        navigationOptions: ({navigation}) => ({
             headerStyle: {
                 backgroundColor: '#5637DD'
             },
@@ -184,7 +184,7 @@ const LoginNavigator = createStackNavigator(
         Login: { screen: Login }
     },
     {
-        defaultNavigationOptions: ({navigation}) => ({
+        navigationOptions: ({navigation}) => ({
             headerStyle: {
                 backgroundColor: '#5637DD'
             },
@@ -338,20 +338,18 @@ class Main extends Component {
 
         NetInfo.fetch().then(connectionInfo = {
             (Platform.OS === 'ios')
-            ? Alert.alert('Initial Network Connectivity Type:', connectionInfo.type)
-            : ToastAndroid.show('Initial Network Connectivity Type: ' +
-                connectionInfo.type, ToastAndroid.LONG);
-        });
+                ? Alert.alert('Initial Network Connectivity Type:', connectionInfo.type)
+                : ToastAndroid.show('Initial Network Connectivity Type: ' +
+                    connectionInfo.type, ToastAndroid.LONG));
+        };
 
         this.unsubscribeNetInfo = NetInfo.addEventListener(connectionInfo => {
                 this.handleConnectivityChange(connectionInfo);
         });
     
-    }
-
-    componentWillUnmount() {
-        this.unsubscribeNetInfo();
-    }
+    componentWillUnmount();
+    this.unsubscribeNetInfo();
+    
 
     handleConnectivityChange = connectionInfo => {
         let connectionMsg = 'You are now connected to an active network.';
@@ -369,8 +367,7 @@ class Main extends Component {
         (Platform.OS === 'ios')
         ? Alert.alert('Connection change:', connectionMsg)
         : ToastAndroid.show(connectionMsg, ToastAndroid.LONG);
-    }
-
+    };
 
     render() {
         return ( 
@@ -387,9 +384,9 @@ class Main extends Component {
 
                 );
         }
-    }
+
     
-const styles = StyleSheet.create({
+const styles = StyleSheet.create ({
     container: {
         flex: 1,
     },
